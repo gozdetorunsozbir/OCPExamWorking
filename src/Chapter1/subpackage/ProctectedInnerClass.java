@@ -9,9 +9,25 @@ public class ProctectedInnerClass extends ProtectedOuterClass {
         ProctectedInnerClass obj = new ProctectedInnerClass();
         System.out.println(obj.hasFur); //It must be new object
 
+
+        ProtectedOuterClass outer = new ProctectedInnerClass();
+
+        // As per overriding rules this should call to class Derive's static
+        // overridden method. Since static method can not be overridden, it
+        // calls Base's display()
+        outer.display();
+
+        // Here overriding works and Derive's print() is called
+        outer.print();
+
+        ProctectedInnerClass innerClass = new ProctectedInnerClass();
+        innerClass.display();
+
+
     }
 
     // This method hides display() in Base
+    //You cannot override in ProtectedOuterClass
     public static void display() {
         System.out.println("Static or class method from Derived");
     }
